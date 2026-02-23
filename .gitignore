@@ -1,8 +1,15 @@
-# OSX
-#
-.DS_Store
+# -------------------------------------------------------------------
+# REACT native / MOBILE APP .GITIGNORE
+# -------------------------------------------------------------------
 
-# Xcode
+# --- OSX / General ---
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+Thumbs.db
+
+# --- Xcode / iOS ---
 #
 build/
 *.pbxuser
@@ -22,7 +29,7 @@ DerivedData
 *.xcuserstate
 **/.xcode.env.local
 
-# Android/IntelliJ
+# --- Android / IntelliJ ---
 #
 build/
 .idea
@@ -34,39 +41,75 @@ local.properties
 *.keystore
 !debug.keystore
 .kotlin/
+captures/
+.externalNativeBuild
+.navigation/
+*.jks
+*.p12
+*.key
 
-# node.js
+# --- Node.js / Dependencies ---
 #
 node_modules/
 npm-debug.log
 yarn-error.log
+package-lock.json
+yarn.lock
 
-# fastlane
+# --- Secrets & Environment Variables (CRITICAL) ---
 #
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
-# screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://docs.fastlane.tools/best-practices/source-control/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.staging
 
+# --- Fastlane ---
+#
 **/fastlane/report.xml
 **/fastlane/Preview.html
 **/fastlane/screenshots
 **/fastlane/test_output
 
-# Bundle artifact
+# --- Bundle Artifacts ---
+#
 *.jsbundle
+/assets/
 
-# Ruby / CocoaPods
+# --- Ruby / CocoaPods ---
+#
 **/Pods/
 /vendor/bundle/
+.ruby-version
+.ruby-gemset
+Gemfile.lock
 
-# Temporary files created by Metro to check the health of the file watcher
+# --- Expo / Web (If applicable) ---
+#
+.expo/
+dist/
+web-build/
+
+# --- Testing ---
+#
+/coverage
+__tests__/__snapshots__/
+
+# --- Editors / IDEs ---
+#
+.vscode/
+!.vscode/extensions.json
+.history/
+*.swp
+*.swo
+
+# --- Metro Bundler ---
+#
 .metro-health-check*
 
-# testing
-/coverage
-
-# Yarn
+# --- Yarn Modern ---
+#
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
