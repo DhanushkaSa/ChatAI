@@ -91,7 +91,7 @@ const SignUpScreen = ({ navigation }: any) => {
                     onPress={createUser}
                     text="Sign Up"
                     buttonStyle={{ marginTop: vs(10), width: s(315), height: vs(40), borderRadius: 10, backgroundColor: COLORS.btnColor }}
-                    textStyle={{ textAlign: "center", paddingTop: vs(8), fontSize: s(18), color: COLORS.white }}
+                    textStyle={{ textAlign: "center", paddingTop: vs(8), fontSize: s(18), color: COLORS.black }}
 
                 />
 

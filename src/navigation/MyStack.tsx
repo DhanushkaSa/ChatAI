@@ -6,6 +6,7 @@ import LoginScreen from '../screens/LoginScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SignUpScreen from '../screens/SignUpScreen';
 import HomeScreen from '../screens/HomeScreen';
+import MyTabs from './MyTabs';
 
 
 
@@ -38,9 +39,9 @@ const MyStack = () => {
             {showOnboarding && (
                 <Stack.Screen name="OnBoarding" component={OnBoarding} />
             )}
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="SignUp" component={SignUpScreen} />
-            <Stack.Screen name="Home" component={HomeScreen} />
+            {/* <Stack.Screen name="Login" component={LoginScreen} /> */}
+            {/* <Stack.Screen name="SignUp" component={SignUpScreen} /> */}
+            <Stack.Screen name="Main" component={MyTabs}/>
 
         </Stack.Navigator>
     )

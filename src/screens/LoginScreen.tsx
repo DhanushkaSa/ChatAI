@@ -54,7 +54,7 @@ const LoginScreen = ({ navigation }: any) => {
 
       console.log("User Data : ", userCredential);
 
-      navigation.navigate("Home");
+      navigation.navigate("Main");
       return userCredential;
 
     } catch (error: any) {
@@ -71,7 +71,7 @@ const LoginScreen = ({ navigation }: any) => {
       );
 
 
-      navigation.navigate("Home")
+      navigation.navigate("Main")
     } catch (error: any) {
       console.log(error.code, error.message);
       Alert.alert(error.message)
@@ -121,7 +121,7 @@ const LoginScreen = ({ navigation }: any) => {
           onPress={signInEmailAndPassword}
           text="Login"
           buttonStyle={{ marginTop: vs(10), width: s(315), height: vs(40), borderRadius: 10, backgroundColor: COLORS.btnColor }}
-          textStyle={{ textAlign: "center", paddingTop: vs(8), fontSize: s(18), color: COLORS.white }}
+          textStyle={{ textAlign: "center", paddingTop: vs(8), fontSize: s(18), color: COLORS.black }}
 
 
         />
@@ -150,7 +150,7 @@ const LoginScreen = ({ navigation }: any) => {
           }}
           textStyle={{
             fontSize: s(15),
-            color: COLORS.textColor,
+            color: COLORS.white,
             marginLeft: s(8),
           }}
           icon="https://static.vecteezy.com/system/resources/previews/010/353/285/large_2x/colourful-google-logo-on-white-background-free-vector.jpg"
