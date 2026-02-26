@@ -39,9 +39,9 @@ const MyStack = () => {
             {showOnboarding && (
                 <Stack.Screen name="OnBoarding" component={OnBoarding} />
             )}
-            {/* <Stack.Screen name="Login" component={LoginScreen} /> */}
-            {/* <Stack.Screen name="SignUp" component={SignUpScreen} /> */}
-            <Stack.Screen name="Main" component={MyTabs}/>
+            {/* <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="SignUp" component={SignUpScreen} /> */}
+            <Stack.Screen name="Main" component={MyTabs} />
 
         </Stack.Navigator>
     )

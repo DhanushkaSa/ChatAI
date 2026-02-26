@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
         marginBottom: vs(35)
     },
     nextText: {
-        fontSize: 20,
+        fontSize: 15,
         color: COLORS.black,
         textAlign: "center",
         marginTop: vs(8),

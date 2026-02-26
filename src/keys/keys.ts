@@ -1,0 +1,1 @@
+export const HUGGING_FACE_KEY="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"

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import { vs } from 'react-native-size-matters'
+import { s, vs } from 'react-native-size-matters'
 import Icon from 'react-native-vector-icons/Feather'
 
 interface InputTextProps {
@@ -13,10 +13,11 @@ interface InputTextProps {
     onChangeText?: (text: string) => void
     icon?: any
     placeholderTextColor?: string
+    multiline?: boolean
 
 
 }
-const InputText = ({ placeholder, placeholderTextColor, secureTextEntry, style, keyboardType, value, onChangeText, icon }: InputTextProps) => {
+const InputText = ({ placeholder, placeholderTextColor, secureTextEntry, style, keyboardType, value, onChangeText, icon ,multiline}: InputTextProps) => {
 
     const [hidePassword, setHidePassword] = useState(secureTextEntry)
 
@@ -36,6 +37,7 @@ const InputText = ({ placeholder, placeholderTextColor, secureTextEntry, style, 
                 onChangeText={onChangeText}
                 autoCapitalize="none"
                 autoCorrect={false}
+                multiline={multiline}
 
             />
 
@@ -64,7 +66,6 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         marginTop: vs(50),
-        padding: 15,
         borderRadius: 15
     },
     icon: {

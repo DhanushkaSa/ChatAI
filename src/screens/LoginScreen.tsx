@@ -23,7 +23,7 @@ const LoginScreen = ({ navigation }: any) => {
     GoogleSignin.configure({
       webClientId: '853028452285-ge5qrmueh7ajerv283a80liia7q475p1.apps.googleusercontent.com',
     });
-  })
+  }, [])
 
 
 
@@ -89,7 +89,8 @@ const LoginScreen = ({ navigation }: any) => {
 
 
       <View style={styles.container}>
-        <Image source={{ uri: "https://www.intelligenthq.com/wp-content/uploads/2023/11/Automating-HR-How-AI-And-Chatbots-Revolutionize-Employee-Onboarding1.jpg" }} style={styles.image} />
+
+        <Image source={require("../assets/splash.png")} style={styles.image} />
         <Text style={styles.title}>Welcome Back!</Text>
         <Text style={styles.subtitle}>Enter your login details</Text>
 
@@ -121,7 +122,7 @@ const LoginScreen = ({ navigation }: any) => {
           onPress={signInEmailAndPassword}
           text="Login"
           buttonStyle={{ marginTop: vs(10), width: s(315), height: vs(40), borderRadius: 10, backgroundColor: COLORS.btnColor }}
-          textStyle={{ textAlign: "center", paddingTop: vs(8), fontSize: s(18), color: COLORS.black }}
+          textStyle={{ textAlign: "center", paddingTop: vs(8), fontSize: s(15), color: COLORS.black }}
 
 
         />
@@ -218,6 +219,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.black,
     justifyContent: "center",
     alignItems: "center",
+
   },
   image: {
     width: 150,
