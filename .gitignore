@@ -31,6 +31,8 @@ DerivedData
 
 # --- Android / IntelliJ ---
 #
+src/keys/keys.ts
+
 build/
 .idea
 .gradle
