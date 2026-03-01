@@ -5,7 +5,6 @@ import { COLORS } from '../styles/colors';
 import { s, vs } from 'react-native-size-matters';
 import { useAuth } from '../context/AuthContext';
 import FeatherIcon from "react-native-vector-icons/Feather"
-import { useSelector } from 'react-redux';
 import ButtonComponent from '../components/ButtonComponent';
 
 const ProfileScreen = () => {
