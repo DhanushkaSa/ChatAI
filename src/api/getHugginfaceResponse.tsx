@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { HUGGING_FACE_KEY } from '../keys/keys';
+import { HUGGING_FACE_KEY } from '@env';
 
 
 
