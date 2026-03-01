@@ -19,7 +19,7 @@ export const getHuggingFaceResponse = async (msg: string) => {
             {
                 headers: {
                     Authorization: `Bearer ${HUGGING_FACE_KEY}`,
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
             },
         );

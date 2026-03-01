@@ -10,6 +10,7 @@ import MyStack from './src/navigation/MyStack';
 import { MyTheme } from './src/styles/colors';
 import { store } from './src/store/store';
 import { setUser, clearUser } from './src/store/authSlice';
+import { AuthProvider } from './src/context/AuthContext';
 
 
 const AppContent = () => {
@@ -31,13 +32,12 @@ const AppContent = () => {
     const unsubscribe = auth().onAuthStateChanged((user) => {
       if (user) {
 
-        const fullName = user.displayName || "Friend";
-        const firstName = fullName.split(' ')[0];
+      
 
         dispatch(setUser({
           uid: user.uid,
           email: user.email,
-          displayName: firstName,
+          displayName: user.displayName,
           photoURL: user.photoURL,
 
 
@@ -51,10 +51,12 @@ const AppContent = () => {
   }, [dispatch]);
 
   return (
-    <NavigationContainer theme={MyTheme}>
-      <StatusBar backgroundColor="black" barStyle="light-content" />
-      <MyStack />
-    </NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer theme={MyTheme}>
+        <StatusBar backgroundColor="black" barStyle="light-content" />
+        <MyStack />
+      </NavigationContainer>
+    </AuthProvider>
   );
 };
 

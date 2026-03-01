@@ -9,6 +9,9 @@ import ButtonComponent from '../components/ButtonComponent'
 import { useSelector } from 'react-redux'
 import { getHuggingFaceResponse } from '../api/getHugginfaceResponse'
 import { TypewriterText } from '../components/TypewriterText'
+// import { db } from "./firebaseConfig";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { useAuth } from '../context/AuthContext'
 
 
 const HomeScreen = () => {
@@ -17,6 +20,11 @@ const HomeScreen = () => {
   const [message, setMessage] = useState("")
   const [chatHistory, setChatHistory] = useState<Array<{ msg: string; answer: any }>>([]);
   const flatListRef = useRef<FlatList>(null);
+  const email = user?.email
+  const displayName = email?.split('@')[0]
+
+  const authContext = useAuth();
+  const User = authContext?.user;
 
 
 
@@ -37,6 +45,17 @@ const HomeScreen = () => {
 
 
   }
+
+  // const saveMessage = async ({ userId, chatId, messageText, role }: any) => {
+  //   // Path: users -> [UID] -> chats -> [ChatID] -> messages
+  //   const messagesRef = collection(db, "users", userId, "chats", chatId, "messages");
+
+  //   await addDoc(messagesRef, {
+  //     text: messageText,
+  //     sender: role, // 'user' or 'ai'
+  //     timestamp: serverTimestamp()
+  //   });
+  // }
 
 
 
@@ -66,10 +85,13 @@ const HomeScreen = () => {
       setChatHistory((prevHistory) => {
         const updatedHistory = [...prevHistory];
         updatedHistory[updatedHistory.length - 1].answer = response;
+
+
         return updatedHistory;
       });
 
 
+      // saveMessage()
 
     } catch (error) {
       console.error(error);
@@ -101,7 +123,7 @@ const HomeScreen = () => {
               <FeatherIcon name="user" size={s(20)} color={COLORS.white} />
             </View>
           )}
-          <Text style={{ color: COLORS.white, alignSelf: "center" }}>Hi, {user?.displayName}</Text>
+          <Text style={{ color: COLORS.white, alignSelf: "center" }}>Hi, {displayName}</Text>
         </View>
 
 
@@ -112,6 +134,7 @@ const HomeScreen = () => {
               data={chatHistory}
               style={{ width: '100%', marginBottom: vs(70) }}
               contentContainerStyle={{ paddingBottom: vs(100), paddingHorizontal: s(10) }}
+              showsVerticalScrollIndicator={false}
               keyExtractor={(item, index) => index.toString()}
               onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
               renderItem={({ item, index }) => (
@@ -137,7 +160,7 @@ const HomeScreen = () => {
               <View style={styles.userName}>
                 <View style={{ flexDirection: "row", gap: 10 }}>
                   <Image source={require("../assets/stars.png")} style={{ width: 25, height: 25, marginTop: vs(5) }} />
-                  <Text style={styles.userNameText}>Hi, <Text style={{ color: COLORS.btnColor }}>{user?.displayName}</Text></Text>
+                  <Text style={styles.userNameText}>Hi, <Text style={{ color: COLORS.btnColor }}>{displayName}</Text></Text>
                 </View>
 
               </View>

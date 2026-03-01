@@ -144,13 +144,17 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.btnColor,
         marginRight: s(20),
         borderRadius: 10,
-        marginBottom: vs(35)
+        marginBottom: vs(35),
+        
     },
     nextText: {
         fontSize: 15,
         color: COLORS.black,
         textAlign: "center",
-        marginTop: vs(8),
+        marginTop: vs(15),
+        
+        
+
 
 
     }

@@ -1,1 +1,3 @@
-export const HUGGING_FACE_KEY="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"
+export const HUGGING_FACE_KEY="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"
+
+// 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

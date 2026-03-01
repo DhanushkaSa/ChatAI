@@ -3,8 +3,10 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import FontAwsomeIcon from 'react-native-vector-icons/FontAwesome5';
 import { COLORS } from '../styles/colors';
 import ProfileScreen from '../screens/ProfileScreen';
+import HistoryScreen from '../screens/HistoryScreen';
 
 const Tab = createBottomTabNavigator();
 const MyTabs = () => {
@@ -29,6 +31,20 @@ const MyTabs = () => {
                     tabBarIcon: ({ color, focused }) => (
                         <FeatherIcon
                             name="home"
+                            size={focused ? 28 : 24}
+                            color={color}
+                        />
+                    ),
+                }}
+            />
+
+            <Tab.Screen
+                name="History"
+                component={HistoryScreen}
+                options={{
+                    tabBarIcon: ({ color, focused }) => (
+                        <FontAwsomeIcon
+                            name="history"
                             size={focused ? 28 : 24}
                             color={color}
                         />
