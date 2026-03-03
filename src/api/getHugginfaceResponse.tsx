@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import { HUGGING_FACE_KEY } from '@env';
+// import { HUGGING_FACE_KEY } from '@env';
 
-
+const HUGGING_FACE_KEY = ""
 
 const huggingFaceUrl = 'https://router.huggingface.co/v1/chat/completions';
 

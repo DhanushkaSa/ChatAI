@@ -9,9 +9,8 @@ import ButtonComponent from '../components/ButtonComponent'
 import { useSelector } from 'react-redux'
 import { getHuggingFaceResponse } from '../api/getHugginfaceResponse'
 import { TypewriterText } from '../components/TypewriterText'
-// import { db } from "./firebaseConfig";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { useAuth } from '../context/AuthContext'
+import { useTranslation } from 'react-i18next'
 
 
 const HomeScreen = () => {
@@ -22,6 +21,8 @@ const HomeScreen = () => {
   const flatListRef = useRef<FlatList>(null);
   const email = user?.email
   const displayName = email?.split('@')[0]
+
+  const { t } = useTranslation()
 
   const authContext = useAuth();
   const User = authContext?.user;
@@ -160,35 +161,35 @@ const HomeScreen = () => {
               <View style={styles.userName}>
                 <View style={{ flexDirection: "row", gap: 10 }}>
                   <Image source={require("../assets/stars.png")} style={{ width: 25, height: 25, marginTop: vs(5) }} />
-                  <Text style={styles.userNameText}>Hi, <Text style={{ color: COLORS.btnColor }}>{displayName}</Text></Text>
+                  <Text style={styles.userNameText}>{t("home.greeting")}, <Text style={{ color: COLORS.btnColor }}>{displayName}</Text></Text>
                 </View>
 
               </View>
 
               <View style={styles.subContainer}>
-                <View style={{ flexDirection: "row", gap: 10 }}>
-                  <Image source={require("../assets/stars.png")} style={{ width: 25, height: 25 }} />
-                  <Text style={styles.welcomeMessage}>I suggest you some names you can ask me..</Text>
+                <View style={{ flexDirection: "row", gap: 3, justifyContent: "center" }}>
+                  <Image source={require("../assets/stars.png")} style={{ width: 20, height: 20, marginLeft: s(30) }} />
+                  <Text style={styles.welcomeMessage}>{t("home.suggestionTitle")}</Text>
                 </View>
 
                 <View style={{ flexDirection: "row", gap: 10 }}>
                   <ButtonComponent
-                    text={"Trending Technologies"}
-                    textStyle={{ color: COLORS.white, fontSize: s(12) }}
+                    text={t("home.trendingTechnologies")}
+                    textStyle={{ color: COLORS.white, fontSize: s(10) }}
                     buttonStyle={{ borderWidth: 1, borderColor: COLORS.btnColor, marginTop: vs(10), padding: 8, borderRadius: s(20) }}
                     onPress={() => getResponse("Trending Technologies")}
 
                   />
                   <ButtonComponent
-                    text={"Education"}
-                    textStyle={{ color: COLORS.white, fontSize: s(12) }}
+                    text={t("home.education")}
+                    textStyle={{ color: COLORS.white, fontSize: s(10) }}
                     buttonStyle={{ borderWidth: 1, borderColor: COLORS.btnColor, marginTop: vs(10), padding: 8, borderRadius: s(20) }}
                     onPress={() => getResponse("Education")}
 
                   />
                   <ButtonComponent
-                    text={"Trending News"}
-                    textStyle={{ color: COLORS.white, fontSize: s(12) }}
+                    text={t("home.trendingNews")}
+                    textStyle={{ color: COLORS.white, fontSize: s(10) }}
                     buttonStyle={{ borderWidth: 1, borderColor: COLORS.btnColor, marginTop: vs(10), padding: 8, borderRadius: s(20) }}
                     onPress={() => getResponse("Trending News")}
 
@@ -217,7 +218,7 @@ const HomeScreen = () => {
             <View style={{ flex: 1, marginLeft: 10 }}>
               <InputText
                 style={styles.inputStyle}
-                placeholder="Type your message..."
+                placeholder={t("home.typeMessage")}
                 placeholderTextColor={COLORS.textColor}
                 value={message}
                 onChangeText={(text: any) => setMessage(text)}
@@ -286,20 +287,20 @@ const styles = StyleSheet.create({
   userName: {
     width: "100%",
     borderRadius: 15,
-    justifyContent: "center",
-    alignItems: "center",
     marginTop: vs(5),
-    padding: 15
+    padding: 15,
+    textAlign: "center",
   },
 
   userNameText: {
     color: COLORS.white,
-    fontSize: s(25)
+    fontSize: s(22)
   },
 
   welcomeMessage: {
     color: COLORS.white,
-    fontSize: s(15)
+    fontSize: s(15),
+    textAlign: "center",
   },
 
   inputWrapper: {

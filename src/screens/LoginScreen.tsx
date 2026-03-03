@@ -9,6 +9,7 @@ import ButtonComponent from '../components/ButtonComponent'
 import auth, { FacebookAuthProvider, GoogleAuthProvider, signInWithCredential } from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { AccessToken, LoginManager } from 'react-native-fbsdk-next'
+import { useTranslation } from 'react-i18next'
 
 
 
@@ -18,6 +19,7 @@ const LoginScreen = ({ navigation }: any) => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const { t } = useTranslation()
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -59,7 +61,7 @@ const LoginScreen = ({ navigation }: any) => {
 
     } catch (error: any) {
       console.log("Google Sign-In Error:", error);
-      Alert.alert("Login Failed", error);
+      Alert.alert(t("login.loginFailed"), error.message);
     }
   }
 
@@ -91,13 +93,13 @@ const LoginScreen = ({ navigation }: any) => {
       <View style={styles.container}>
 
         <Image source={require("../assets/splash.png")} style={styles.image} />
-        <Text style={styles.title}>Welcome Back!</Text>
-        <Text style={styles.subtitle}>Enter your login details</Text>
+        <Text style={styles.title}>{t("login.welcomeBack")}</Text>
+        <Text style={styles.subtitle}>{t("login.enterLoginDetails")}</Text>
 
 
 
         <InputText
-          placeholder="Enter Email"
+          placeholder={t("login.emailPlaceholder")}
           secureTextEntry={false}
           style={{ marginTop: vs(5), borderWidth: 1, borderColor: COLORS.textColor, paddingLeft: s(45), width: "95%", height: vs(40), color: COLORS.white, fontSize: s(15) }}
           placeholderTextColor={COLORS.textColor}
@@ -108,7 +110,7 @@ const LoginScreen = ({ navigation }: any) => {
         />
 
         <InputText
-          placeholder="Password"
+          placeholder={t("login.passwordPlaceholder")}
           secureTextEntry={true}
           style={{ marginTop: vs(5), borderWidth: 1, borderColor: COLORS.textColor, paddingLeft: s(45), width: "95%", height: vs(40), color: COLORS.white, fontSize: s(15) }}
           placeholderTextColor={COLORS.textColor}
@@ -120,7 +122,7 @@ const LoginScreen = ({ navigation }: any) => {
 
         <ButtonComponent
           onPress={signInEmailAndPassword}
-          text="Login"
+          text={t("login.loginButton")}
           buttonStyle={{ marginTop: vs(10), width: s(315), height: vs(40), borderRadius: 10, backgroundColor: COLORS.btnColor }}
           textStyle={{ textAlign: "center", paddingTop: vs(8), fontSize: s(15), color: COLORS.black }}
 
@@ -129,7 +131,7 @@ const LoginScreen = ({ navigation }: any) => {
 
         <View style={{ flexDirection: "row", marginTop: vs(10) }}>
           <View style={{ width: s(270 / 2), height: .5, backgroundColor: COLORS.textColor, marginTop: vs(10) }} />
-          <Text style={{ textAlign: "center", marginTop: vs(1), fontSize: s(15), color: COLORS.textColor, marginHorizontal: s(10) }}>Or</Text>
+          <Text style={{ textAlign: "center", marginTop: vs(1), fontSize: s(15), color: COLORS.textColor, marginHorizontal: s(10) }}>{t("login.or")}</Text>
           <View style={{ width: s(270 / 2), height: .5, backgroundColor: COLORS.textColor, marginTop: vs(10) }} />
 
         </View>
@@ -137,7 +139,7 @@ const LoginScreen = ({ navigation }: any) => {
 
         <ButtonComponent
           onPress={onGoogleButtonPress}
-          text="Login with Google"
+          text={t("login.loginWithGoogle")}
           buttonStyle={{
             flexDirection: "row",
             justifyContent: "center",
@@ -177,7 +179,7 @@ const LoginScreen = ({ navigation }: any) => {
               color: COLORS.white,
             }}
           >
-            Don't have an account?
+            {t("login.dontHaveAccount")}
           </Text>
 
           <TouchableOpacity onPress={() => { navigation.navigate("SignUp") }}>
@@ -188,7 +190,7 @@ const LoginScreen = ({ navigation }: any) => {
                 marginLeft: s(5),
               }}
             >
-              Sign Up
+              {t("login.signUp")}
             </Text>
           </TouchableOpacity>
         </View>

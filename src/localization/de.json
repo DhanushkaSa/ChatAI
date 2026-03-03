@@ -1,0 +1,48 @@
+{
+  "login": {
+    "welcomeBack": "Willkommen zurück!",
+    "enterLoginDetails": "Geben Sie Ihre Anmeldedaten ein",
+    "emailPlaceholder": "E-Mail eingeben",
+    "passwordPlaceholder": "Passwort",
+    "loginButton": "Anmelden",
+    "or": "Oder",
+    "loginWithGoogle": "Mit Google anmelden",
+    "dontHaveAccount": "Noch keinen Account?",
+    "signUp": "Registrieren",
+    "loginFailed": "Anmeldung fehlgeschlagen"
+  },
+  "signup": {
+    "title": "Registrieren",
+    "enterDetails": "Geben Sie Ihre Daten ein",
+    "emailPlaceholder": "E-Mail eingeben",
+    "passwordPlaceholder": "Passwort",
+    "confirmPasswordPlaceholder": "Passwort bestätigen",
+    "signUpButton": "Registrieren",
+    "alreadyHaveAccount": "Haben Sie bereits ein Konto?",
+    "login": "Anmelden",
+    "passwordMismatch": "Passwörter stimmen nicht überein!",
+    "registeredSuccessfully": "Erfolgreich registriert!"
+  },
+  "home": {
+    "greeting": "Hallo",
+    "suggestionTitle": "Hier sind einige Themen, die Sie mich fragen können..",
+    "trendingTechnologies": "Beliebte Technologien",
+    "education": "Bildung",
+    "trendingNews": "Aktuelle Nachrichten",
+    "typeMessage": "Geben Sie Ihre Nachricht ein..."
+  },
+  "profile": {
+    "title": "Profil",
+    "language": "Sprache",
+    "logout": "Abmelden",
+    "supportHelp": "Support & Hilfe",
+    "confirm": "Bestätigen",
+    "languages": {
+      "english": "Englisch",
+      "sinhala": "Singhalesisch",
+      "tamil": "Tamilisch",
+      "russian": "Russisch",
+      "german": "Deutsch"
+    }
+  }
+}

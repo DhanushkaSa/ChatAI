@@ -1,0 +1,48 @@
+{
+  "login": {
+    "welcomeBack": "மீண்டும் வரவேற்கின்றோம்!",
+    "enterLoginDetails": "உங்கள் உள்நுழைவு விவரங்களை உள்ளிடவும்",
+    "emailPlaceholder": "மின்னஞ்சல் ஐடி உள்ளிடவும்",
+    "passwordPlaceholder": "கடவுச்சொல்",
+    "loginButton": "உள்நுழைய",
+    "or": "அல்லது",
+    "loginWithGoogle": "Google மூலம் உள்நுழைய",
+    "dontHaveAccount": "கணக்கு இல்லையா?",
+    "signUp": "கணக்கு உருவாக்கவும்",
+    "loginFailed": "உள்நுழைவு தோல்வியடைந்தது"
+  },
+  "signup": {
+    "title": "கணக்கு உருவாக்கவும்",
+    "enterDetails": "உங்கள் விவரங்களை உள்ளிடவும்",
+    "emailPlaceholder": "மின்னஞ்சல் ஐடி உள்ளிடவும்",
+    "passwordPlaceholder": "கடவுச்சொல்",
+    "confirmPasswordPlaceholder": "கடவுச்சொல் உறுதி செய்யவும்",
+    "signUpButton": "பதிவு செய்யவும்",
+    "alreadyHaveAccount": "ஏற்கனவே ஒரு கணக்கு உள்ளதா?",
+    "login": "உள்நுழைய",
+    "passwordMismatch": "கடவுச்சொல் பொருந்தவில்லை!",
+    "registeredSuccessfully": "வெற்றிகரமாக பதிவு செய்யப்பட்டது!"
+  },
+  "home": {
+    "greeting": "வணக்கம்",
+    "suggestionTitle": "நீங்கள் என்னிடம் கேட்கலாம் சில விஷயங்கள்..",
+    "trendingTechnologies": "பிரபல தொழில்நுட்பங்கள்",
+    "education": "கல்வி",
+    "trendingNews": "பிரபல செய்திகள்",
+    "typeMessage": "உங்கள் செய்தியை டைப் செய்யவும்..."
+  },
+  "profile": {
+    "title": "சுயவிவரம்",
+    "language": "மொழி",
+    "logout": "வெளியேறு",
+    "supportHelp": "ஆதரவு & உதவி",
+    "confirm": "உறுதிப்படுத்தவும்",
+    "languages": {
+      "english": "ஆங்கிலம்",
+      "sinhala": "சிங்களம்",
+      "tamil": "தமிழ்",
+      "russian": "ரஷ்யா",
+      "german": "ஜெர்மன்"
+    }
+  }
+}

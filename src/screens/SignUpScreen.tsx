@@ -8,19 +8,21 @@ import Lock from 'react-native-vector-icons/Feather'
 import ButtonComponent from '../components/ButtonComponent'
 import IconConfirm from "react-native-vector-icons/MaterialIcons"
 import auth from '@react-native-firebase/auth';
+import { useTranslation } from 'react-i18next'
 const SignUpScreen = ({ navigation }: any) => {
 
     const [email, setEmail] = useState("")
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const { t } = useTranslation()
 
 
     const createUser = async () => {
         try {
 
             if (password !== confirmPassword) {
-                Alert.alert("Password mismatched!!!");
+                Alert.alert(t("signup.passwordMismatch"));
 
             } else {
                 await auth().createUserWithEmailAndPassword(
@@ -29,7 +31,7 @@ const SignUpScreen = ({ navigation }: any) => {
                 );
 
 
-                Alert.alert('Registered Successfully!');
+                Alert.alert(t("signup.registeredSuccessfully"));
 
 
 
@@ -52,13 +54,13 @@ const SignUpScreen = ({ navigation }: any) => {
 
             <View style={styles.container}>
                 <Image source={require("../assets/splash.png")} style={styles.image} />
-                <Text style={styles.title}>Sign Up</Text>
-                <Text style={styles.subtitle}>Enter your details</Text>
+                <Text style={styles.title}>{t("signup.title")}</Text>
+                <Text style={styles.subtitle}>{t("signup.enterDetails")}</Text>
 
 
 
                 <InputText
-                    placeholder="Enter Email"
+                    placeholder={t("signup.emailPlaceholder")}
                     secureTextEntry={false}
                     style={{ marginTop: vs(5), borderWidth: 1, borderColor: COLORS.textColor, paddingLeft: s(45), width: "95%", height: vs(40), color: COLORS.white, fontSize: s(15) }}
                     placeholderTextColor={COLORS.textColor}
@@ -69,7 +71,7 @@ const SignUpScreen = ({ navigation }: any) => {
                 />
 
                 <InputText
-                    placeholder="Password"
+                    placeholder={t("signup.passwordPlaceholder")}
                     secureTextEntry={true}
                     style={{ marginTop: vs(5), borderWidth: 1, borderColor: COLORS.textColor, paddingLeft: s(45), width: "95%", height: vs(40), color: COLORS.white, fontSize: s(15) }}
                     placeholderTextColor={COLORS.textColor}
@@ -80,7 +82,7 @@ const SignUpScreen = ({ navigation }: any) => {
                 />
 
                 <InputText
-                    placeholder="Confirm Password"
+                    placeholder={t("signup.confirmPasswordPlaceholder")}
                     secureTextEntry={true}
                     style={{ marginTop: vs(5), borderWidth: 1, borderColor: COLORS.textColor, paddingLeft: s(45), width: "95%", height: vs(40), color: COLORS.white, fontSize: s(15) }}
                     placeholderTextColor={COLORS.textColor}
@@ -92,7 +94,7 @@ const SignUpScreen = ({ navigation }: any) => {
 
                 <ButtonComponent
                     onPress={createUser}
-                    text="Sign Up"
+                    text={t("signup.signUpButton")}
                     buttonStyle={{ marginTop: vs(10), width: s(315), height: vs(40), borderRadius: 10, backgroundColor: COLORS.btnColor }}
                     textStyle={{ textAlign: "center", paddingTop: vs(8), fontSize: s(15), color: COLORS.black }}
 
@@ -117,7 +119,7 @@ const SignUpScreen = ({ navigation }: any) => {
                             color: COLORS.white,
                         }}
                     >
-                        Already have an account?
+                        {t("signup.alreadyHaveAccount")}
                     </Text>
 
                     <TouchableOpacity onPress={() => { navigation.navigate('Login') }}>
@@ -128,7 +130,7 @@ const SignUpScreen = ({ navigation }: any) => {
                                 marginLeft: s(5),
                             }}
                         >
-                            Login
+                            {t("signup.login")}
                         </Text>
                     </TouchableOpacity>
                 </View>

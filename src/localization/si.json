@@ -1,0 +1,48 @@
+{
+  "login": {
+    "welcomeBack": "නැවතත් පිළිගනිමු!",
+    "enterLoginDetails": "ඔබගේ ලොගින් විස්තර ඇතුළත් කරන්න",
+    "emailPlaceholder": "ඊමේල් ලිපිනය ඇතුළත් කරන්න",
+    "passwordPlaceholder": "මුරපදය",
+    "loginButton": "ලොගින් වන්න",
+    "or": "හෝ",
+    "loginWithGoogle": "Google සමඟ ලොගින් වන්න",
+    "dontHaveAccount": "ගිණුමක් නැද්ද?",
+    "signUp": "ගිණුමක් සාදන්න",
+    "loginFailed": "ලොගින් වීම අසාර්ථක විය"
+  },
+  "signup": {
+    "title": "ගිණුමක් සාදන්න",
+    "enterDetails": "ඔබගේ විස්තර ඇතුළත් කරන්න",
+    "emailPlaceholder": "ඊමේල් ලිපිනය ඇතුළත් කරන්න",
+    "passwordPlaceholder": "මුරපදය",
+    "confirmPasswordPlaceholder": "මුරපදය තහවුරු කරන්න",
+    "signUpButton": "ලියාපදිංචි වන්න",
+    "alreadyHaveAccount": "දැනටමත් ගිණුමක් තිබේද?",
+    "login": "ලොගින් වන්න",
+    "passwordMismatch": "මුරපද ගැලපෙන්නේ නැත!",
+    "registeredSuccessfully": "සාර්ථකව ලියාපදිංචි විය!"
+  },
+  "home": {
+    "greeting": "ආයුබෝවන්",
+    "suggestionTitle": "ඔබට මගෙන් අහන්න පුළුවන් විෂයන් කිහිපයක් මෙන්න..",
+    "trendingTechnologies": "ප්‍රවණතා තාක්ෂණ",
+    "education": "අධ්‍යාපනය",
+    "trendingNews": "ප්‍රවණතා පුවත්",
+    "typeMessage": "ඔබගේ පණිවිඩය ටයිප් කරන්න..."
+  },
+  "profile": {
+    "title": "පැතිකඩ",
+    "language": "භාෂාව",
+    "logout": "ඉවත්වන්න",
+    "supportHelp": "සහාය සහ උදව්",
+    "confirm": "තහවුරු කරන්න",
+    "languages": {
+      "english": "ඉංග්‍රීසි",
+      "sinhala": "සිංහල",
+      "tamil": "දෙමළ",
+      "russian": "රුසියානු",
+      "german": "ජර්මානු"
+    }
+  }
+}

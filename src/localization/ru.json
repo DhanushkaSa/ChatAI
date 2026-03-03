@@ -1,0 +1,48 @@
+{
+  "login": {
+    "welcomeBack": "С возвращением!",
+    "enterLoginDetails": "Введите данные для входа",
+    "emailPlaceholder": "Введите Email",
+    "passwordPlaceholder": "Пароль",
+    "loginButton": "Войти",
+    "or": "Или",
+    "loginWithGoogle": "Войти через Google",
+    "dontHaveAccount": "Нет аккаунта?",
+    "signUp": "Регистрация",
+    "loginFailed": "Не удалось войти"
+  },
+  "signup": {
+    "title": "Регистрация",
+    "enterDetails": "Введите ваши данные",
+    "emailPlaceholder": "Введите Email",
+    "passwordPlaceholder": "Пароль",
+    "confirmPasswordPlaceholder": "Подтвердите пароль",
+    "signUpButton": "Зарегистрироваться",
+    "alreadyHaveAccount": "Уже есть аккаунт?",
+    "login": "Войти",
+    "passwordMismatch": "Пароли не совпадают!",
+    "registeredSuccessfully": "Успешная регистрация!"
+  },
+  "home": {
+    "greeting": "Привет",
+    "suggestionTitle": "Я могу предложить вам несколько тем для вопросов..",
+    "trendingTechnologies": "Популярные технологии",
+    "education": "Образование",
+    "trendingNews": "Актуальные новости",
+    "typeMessage": "Введите ваше сообщение..."
+  },
+  "profile": {
+    "title": "Профиль",
+    "language": "Язык",
+    "logout": "Выйти",
+    "supportHelp": "Поддержка и помощь",
+    "confirm": "Подтвердить",
+    "languages": {
+      "english": "Английский",
+      "sinhala": "Сингальский",
+      "tamil": "Тамильский",
+      "russian": "Русский",
+      "german": "Немецкий"
+    }
+  }
+}

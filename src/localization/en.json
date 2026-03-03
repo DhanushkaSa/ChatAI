@@ -1,0 +1,48 @@
+{
+  "login": {
+    "welcomeBack": "Welcome Back!",
+    "enterLoginDetails": "Enter your login details",
+    "emailPlaceholder": "Enter Email",
+    "passwordPlaceholder": "Password",
+    "loginButton": "Login",
+    "or": "Or",
+    "loginWithGoogle": "Login with Google",
+    "dontHaveAccount": "Don't have an account?",
+    "signUp": "Sign Up",
+    "loginFailed": "Login Failed"
+  },
+  "signup": {
+    "title": "Sign Up",
+    "enterDetails": "Enter your details",
+    "emailPlaceholder": "Enter Email",
+    "passwordPlaceholder": "Password",
+    "confirmPasswordPlaceholder": "Confirm Password",
+    "signUpButton": "Sign Up",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Login",
+    "passwordMismatch": "Password mismatched!!!",
+    "registeredSuccessfully": "Registered Successfully!"
+  },
+  "home": {
+    "greeting": "Hi",
+    "suggestionTitle": "I suggest you some names you can ask me..",
+    "trendingTechnologies": "Trending Technologies",
+    "education": "Education",
+    "trendingNews": "Trending News",
+    "typeMessage": "Type your message..."
+  },
+  "profile": {
+    "title": "Profile",
+    "language": "Language",
+    "logout": "Logout",
+    "supportHelp": "Support & Help",
+    "confirm": "Confirm",
+    "languages": {
+      "english": "English",
+      "sinhala": "Sinhala",
+      "tamil": "Tamil",
+      "russian": "Russian",
+      "german": "German"
+    }
+  }
+}
