@@ -1,0 +1,11 @@
+node_modules
+.git
+.gitignore
+.env
+android/.gradle
+android/build
+android/app/build
+ios/build
+coverage
+npm-debug.log
+yarn-error.log
