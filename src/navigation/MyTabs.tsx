@@ -1,4 +1,3 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
@@ -8,8 +7,13 @@ import { COLORS } from '../styles/colors';
 import ProfileScreen from '../screens/ProfileScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 
+
 const Tab = createBottomTabNavigator();
+
 const MyTabs = () => {
+
+
+
     return (
         <Tab.Navigator
             screenOptions={{
@@ -68,4 +72,3 @@ const MyTabs = () => {
 
 export default MyTabs
 
-const styles = StyleSheet.create({})

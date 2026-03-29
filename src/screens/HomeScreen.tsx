@@ -1,16 +1,21 @@
-import { ActivityIndicator, FlatList, Image, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Alert, FlatList, Image, KeyboardAvoidingView, PermissionsAndroid, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import { COLORS } from '../styles/colors'
 import { s, vs } from 'react-native-size-matters'
 import FeatherIcon from "react-native-vector-icons/Feather"
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome"
+import MaterialIcon from "react-native-vector-icons/MaterialIcons"
 import InputText from '../components/InputText'
 import ButtonComponent from '../components/ButtonComponent'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { getHuggingFaceResponse } from '../api/getHugginfaceResponse'
 import { TypewriterText } from '../components/TypewriterText'
 import { useAuth } from '../context/AuthContext'
 import { useTranslation } from 'react-i18next'
+import { addSession, ChatSession } from '../store/chatHistorySlice'
+import firestore from '@react-native-firebase/firestore'
+import { useRoute } from '@react-navigation/native'
+
 
 
 const HomeScreen = () => {
@@ -18,14 +23,71 @@ const HomeScreen = () => {
   const user = useSelector((state: any) => state.auth.user);
   const [message, setMessage] = useState("")
   const [chatHistory, setChatHistory] = useState<Array<{ msg: string; answer: any }>>([]);
+  const [isRecording, setIsRecording] = useState(false);
   const flatListRef = useRef<FlatList>(null);
   const email = user?.email
   const displayName = email?.split('@')[0]
 
   const { t } = useTranslation()
+  const dispatch = useDispatch();
+  const route = useRoute<any>();
 
   const authContext = useAuth();
   const User = authContext?.user;
+
+  // Session tracking
+  const [currentSessionId, setCurrentSessionId] = useState<string>(Date.now().toString());
+
+  // Clear local session if user logs out
+  useEffect(() => {
+    if (!User?.uid) {
+      setChatHistory([]);
+      setCurrentSessionId(Date.now().toString());
+    }
+  }, [User?.uid]);
+
+  // Load resumed session from HistoryScreen
+  useEffect(() => {
+    if (route.params?.resumedSession) {
+      const session: ChatSession = route.params.resumedSession;
+      setChatHistory(session.messages);
+      setCurrentSessionId(session.id);
+    }
+  }, [route.params?.resumedSession]);
+
+  // Save session helper
+  const saveSession = (messages: Array<{ msg: string; answer: string }>) => {
+    if (messages.length === 0) return;
+    const session: ChatSession = {
+      id: currentSessionId,
+      title: messages[0].msg.substring(0, 50),
+      messages,
+      createdAt: parseInt(currentSessionId, 10),
+      updatedAt: Date.now(),
+    };
+
+    if (User?.uid) {
+      dispatch(addSession({ session, userId: User.uid }));
+
+      // Persist to Firestore
+      firestore()
+        .collection('users')
+        .doc(User.uid)
+        .collection('chatHistory')
+        .doc(currentSessionId)
+        .set(session)
+        .catch((err: any) => console.error('Firestore save error:', err));
+    }
+  };
+
+  // Start new chat
+  const startNewChat = () => {
+    if (chatHistory.length > 0) {
+      saveSession(chatHistory);
+    }
+    setChatHistory([]);
+    setCurrentSessionId(Date.now().toString());
+  };
 
 
 
@@ -34,8 +96,11 @@ const HomeScreen = () => {
       setLoading(false)
     }, 2000)
 
-    return () => clearTimeout(timer)
   }, [])
+
+
+
+
 
   if (isLoading) {
     return (
@@ -47,16 +112,7 @@ const HomeScreen = () => {
 
   }
 
-  // const saveMessage = async ({ userId, chatId, messageText, role }: any) => {
-  //   // Path: users -> [UID] -> chats -> [ChatID] -> messages
-  //   const messagesRef = collection(db, "users", userId, "chats", chatId, "messages");
 
-  //   await addDoc(messagesRef, {
-  //     text: messageText,
-  //     sender: role, // 'user' or 'ai'
-  //     timestamp: serverTimestamp()
-  //   });
-  // }
 
 
 
@@ -87,12 +143,11 @@ const HomeScreen = () => {
         const updatedHistory = [...prevHistory];
         updatedHistory[updatedHistory.length - 1].answer = response;
 
+        // Save session to Redux + Firestore
+        saveSession(updatedHistory);
 
         return updatedHistory;
       });
-
-
-      // saveMessage()
 
     } catch (error) {
       console.error(error);
@@ -124,7 +179,14 @@ const HomeScreen = () => {
               <FeatherIcon name="user" size={s(20)} color={COLORS.white} />
             </View>
           )}
-          <Text style={{ color: COLORS.white, alignSelf: "center" }}>Hi, {displayName}</Text>
+          <Text style={{ color: COLORS.white, alignSelf: "center", flex: 1 }}>Hi, {displayName}</Text>
+
+          {chatHistory.length > 0 && (
+            <TouchableOpacity onPress={startNewChat} style={styles.newChatButton}>
+              <MaterialIcon name="chat-bubble-outline" size={s(18)} color={COLORS.white} />
+              <Text style={{ color: COLORS.white, fontSize: s(11), marginLeft: 4 }}>New</Text>
+            </TouchableOpacity>
+          )}
         </View>
 
 
@@ -227,9 +289,7 @@ const HomeScreen = () => {
               />
             </View>
 
-            <TouchableOpacity style={styles.micButton}>
-              <FeatherIcon name="mic" size={25} color={COLORS.textColor} />
-            </TouchableOpacity>
+
 
             <TouchableOpacity style={styles.sendButton} onPress={() => getResponse()}>
 
@@ -382,7 +442,16 @@ const styles = StyleSheet.create({
   answerText: {
     color: COLORS.white,
     fontSize: s(14),
+  },
 
+  newChatButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: COLORS.lightGray,
+    paddingHorizontal: s(10),
+    paddingVertical: vs(6),
+    borderRadius: s(15),
+    marginRight: s(15),
   },
 
 
