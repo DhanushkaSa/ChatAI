@@ -1,97 +1,219 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# ChatAI
 
-# Getting Started
+ChatAI is a React Native mobile application that brings AI-powered conversations to your users with a modern chat experience. The app supports Firebase authentication, stores chat history in Firestore, and integrates with the Hugging Face inference API to generate responses in real time.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+It is designed for both Android and iOS, with onboarding, profile management, localization, and persistent chat history built in.
 
-## Step 1: Start Metro
+## Features
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- AI-powered chat interface powered by Hugging Face
+- Firebase authentication
+  - Email/password sign-in
+  - Google sign-in
+  - Facebook sign-in
+- Firestore-backed chat history persistence
+- User profile management
+- Onboarding flow for first-time users
+- Multi-language support
+  - English
+  - Russian
+  - German
+  - Sinhala
+  - Tamil
+- Cross-platform React Native app for Android and iOS
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Tech Stack
 
-```sh
-# Using npm
+- React Native
+- TypeScript
+- React Navigation
+- Redux Toolkit
+- Firebase Auth + Firestore
+- Hugging Face Inference API
+- AsyncStorage
+- i18next
+- Jest for testing
+- ESLint + Prettier
+
+## App Structure
+
+```bash
+ChatAI/
+├── __tests__/
+├── android/
+├── ios/
+├── src/
+│   ├── api/
+│   ├── assets/
+│   ├── components/
+│   ├── context/
+│   ├── localization/
+│   ├── navigation/
+│   ├── screens/
+│   ├── store/
+│   └── styles/
+├── App.tsx
+├── package.json
+├── babel.config.js
+├── metro.config.js
+├── tsconfig.json
+├── README.md
+├── Dockerfile
+├── docker-compose.yml
+├── app.json
+├── index.js
+├── jest.config.js
+├── .eslintrc.js
+├── .prettierrc.js
+├── .gitignore
+└── Gemfile
+```
+
+## Screens
+
+- Onboarding
+- Login
+- Sign up
+- Home / chat
+- Chat history
+- Profile settings
+
+## Prerequisites
+
+Before running this project, make sure you have:
+
+- Node.js 22.11.0 or newer
+- npm or yarn
+- Android Studio and Android SDK (for Android)
+- Xcode and CocoaPods (for iOS)
+- A Firebase project
+- A Hugging Face API key
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/DhanushkaSa/ChatAI.git
+cd ChatAI
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+If you are using Yarn:
+
+```bash
+yarn install
+```
+
+### 3. Install iOS dependencies
+
+```bash
+cd ios
+pod install
+cd ..
+```
+
+### 4. Configure Firebase
+
+This app uses Firebase Authentication and Firestore.
+
+1. Create a new Firebase project.
+2. Add Android and iOS apps to the project.
+3. Download and place:
+   - `google-services.json` in `android/app/`
+   - `GoogleService-Info.plist` in the iOS project
+4. Enable the required sign-in methods in Firebase Authentication:
+   - Email/Password
+   - Google Sign-In
+   - Facebook Sign-In (if enabled in your app configuration)
+
+### 5. Configure Hugging Face
+
+The app calls the Hugging Face chat/completions endpoint from `src/api/getHugginfaceResponse.tsx`.
+
+Create a `.env` file at the project root and add your key:
+
+```bash
+HUGGING_FACE_KEY=your_huggingface_api_key
+```
+
+Then make sure the app reads the value securely from environment variables or replace the placeholder value in the API file with your own key.
+
+## Running the App
+
+### Start Metro
+
+```bash
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+### Run on Android
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+### Run on iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Usage
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+1. Launch the app.
+2. Complete the onboarding flow.
+3. Sign in or create an account.
+4. Start a conversation with the AI assistant.
+5. View chat history from the History tab.
+6. Update your profile and app language from the Profile tab.
 
-## Step 3: Modify your app
+## Environment Notes
 
-Now that you have successfully run the app, let's make changes!
+This project uses:
+- Firebase for authentication and data storage
+- Hugging Face for AI inference
+- AsyncStorage for app-level persistence such as onboarding state and language preference
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+If you are deploying or testing in a production environment, ensure that API keys and Firebase credentials are securely managed and not hardcoded in production builds.
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## Development Scripts
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+```bash
+npm start
+npm run android
+npm run ios
+npm test
+npm run lint
+```
 
-## Congratulations! :tada:
+## License
 
-You've successfully run and modified your React Native App. :partying_face:
+This project does not currently include a license file. If you plan to distribute or publish it, consider adding an appropriate open-source license.
 
-### Now what?
+## Contributing
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+Contributions are welcome. If you’d like to improve the app:
 
-# Troubleshooting
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Open a pull request with a clear description
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## Support
 
-# Learn More
+For setup issues, Firebase configuration, or Hugging Face integration problems, check the project configuration files and the official documentation for:
 
-To learn more about React Native, take a look at the following resources:
+- React Native
+- Firebase
+- Hugging Face
+- React Navigation
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+---
+
+This project is a modern AI chat app built with React Native and Firebase, designed to provide a smooth mobile experience for users who want to chat with an AI assistant, track conversations, and manage accounts securely.
